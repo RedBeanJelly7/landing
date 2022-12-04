@@ -27,7 +27,8 @@
     .bouble-item{
         position: absolute;
         // background: #f00;
-        z-index:3;
+        z-index:2;
+        opacity: 0;
         .wrap{
             pointer-events:none;
             border-radius:120px;
@@ -41,7 +42,6 @@
         }
         &:hover{
             .wrap{
-
                 background: #e3e0db;
                 color: #1c1f24;
             }
@@ -69,8 +69,12 @@ body.lightmode{
         background: #ededed;
     }
     .sc-header{
+
+        &::after{
+            background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+        }
         .logo a{
-            background: url('../images/logo-b.png') center/contain no-repeat;
+            color: #1c1f24;
         }
         .btn-area span{
             background: #1c1f24;
@@ -94,8 +98,18 @@ body.lightmode{
         }
     }
     .sc-portfolio{
-        .upline{background: #1c1f24;}
-        .portfolio-item .underline{background: #1c1f24;}
+        .portfolio-item{
+
+            .underline{background: #1c1f24 !important;}
+            .portfolio{
+
+                .hash{
+                    span{
+                        border:2px solid #1c1f24;
+                    }
+                }
+            }
+        }
     }
     .sc-advantages{
         .underline{
@@ -109,10 +123,16 @@ body.lightmode{
 
 
     .bouble-item{
-        border-color:#1c1f24;
+        .wrap{
+
+            border-color:#1c1f24;
+        }
         &:hover{
-            background: #1c1f24;
-            color: #e3e0db;
+            .wrap{
+                background: #1c1f24;
+                color: #e3e0db;
+
+            }
         }
     }
 }
@@ -129,3 +149,5 @@ body.noscroll{
     overflow-y:hidden;
     
 }
+
+

@@ -50,7 +50,8 @@
 }
 .bouble-list .bouble-item {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
+  opacity: 0;
 }
 .bouble-list .bouble-item .wrap {
   pointer-events: none;
@@ -85,8 +86,11 @@ body.lightmode .container {
   color: #1c1f24;
   background: #ededed;
 }
+body.lightmode .sc-header::after {
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+}
 body.lightmode .sc-header .logo a {
-  background: url("../images/logo-b.png") center/contain no-repeat;
+  color: #1c1f24;
 }
 body.lightmode .sc-header .btn-area span {
   background: #1c1f24;
@@ -100,11 +104,11 @@ body.lightmode .sc-intro .plan-area::after {
 body.lightmode .sc-data .underline {
   background-color: #1c1f24;
 }
-body.lightmode .sc-portfolio .upline {
-  background: #1c1f24;
-}
 body.lightmode .sc-portfolio .portfolio-item .underline {
-  background: #1c1f24;
+  background: #1c1f24 !important;
+}
+body.lightmode .sc-portfolio .portfolio-item .portfolio .hash span {
+  border: 2px solid #1c1f24;
 }
 body.lightmode .sc-advantages .underline {
   background: #1c1f24;
@@ -113,10 +117,10 @@ body.lightmode .sc-side {
   background: #e3e0db;
   color: #1c1f24;
 }
-body.lightmode .bouble-item {
+body.lightmode .bouble-item .wrap {
   border-color: #1c1f24;
 }
-body.lightmode .bouble-item:hover {
+body.lightmode .bouble-item:hover .wrap {
   background: #1c1f24;
   color: #e3e0db;
 }
@@ -206,6 +210,17 @@ a {
   align-items: center;
   z-index: 3;
 }
+.sc-header::after {
+  content: "";
+  pointer-events: none;
+  height: 300px;
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(255, 199, 0, 0) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
 .sc-header .logo {
   display: block;
 }
@@ -222,13 +237,9 @@ a {
   width: 70px;
   height: 70px;
   overflow: hidden;
-  visibility: hidden;
 }
 .sc-header .btn-area.on {
   visibility: visible;
-}
-.sc-header .btn-area.on .line {
-  transition: left 300ms 700ms, right 300ms 700ms, visibility 1ms 700ms;
 }
 .sc-header .btn-area.on .line.top {
   left: 0;
@@ -258,11 +269,11 @@ a {
   height: 2px;
 }
 .sc-header .btn-area .line.top {
-  left: -70px;
+  left: -25px;
   top: 25px;
 }
 .sc-header .btn-area .line.bottom {
-  right: -70px;
+  right: -25px;
   bottom: 25px;
 }
 .sc-header .btn-area .cross {
@@ -336,6 +347,24 @@ a {
   background: #e3e0db;
   bottom: 0;
   left: 0;
+}
+
+.gauge {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  /* background:rgba(255,255,255,0.2); */
+  z-index: 10;
+}
+
+.gauge .curr {
+  width: 0;
+  display: block;
+  height: 100%;
+  background: #fff;
+  /* border-radius: 0px 4px 4px 0; */
 }
 
 .container {
@@ -421,8 +450,9 @@ a {
   font-weight: 500;
 }
 .sc-intro .desc {
-  margin-top: 80px;
-  font-size: 50px;
+  margin-top: 50px;
+  font-size: 2.15vw;
+  font-weight: 500;
   width: 66.6666666667%;
 }
 
@@ -442,14 +472,24 @@ a {
   flex-direction: column;
   position: relative;
 }
-.sc-data .data-item strong {
+.sc-data .data-item .count-box {
+  position: relative;
+}
+.sc-data .data-item .count-box strong {
   font-size: 7.864vw;
   font-weight: 500;
+}
+.sc-data .data-item .count-box .unit {
+  font-size: 7.864vw;
 }
 .sc-data .data-item .desc {
   font-size: 0.9375vw;
   margin-top: 15px;
   line-height: 1.5;
+}
+.sc-data .data-item .desc.center {
+  font-size: 4.564vw;
+  line-height: 1;
 }
 .sc-data .data-item .underline {
   width: 100%;
@@ -477,48 +517,34 @@ a {
   display: inline-block;
 }
 .sc-portfolio .group-portfolio {
-  width: calc(100% - 460px);
-  height: 100%;
-  margin-right: 90px;
+  width: 100%;
   padding-top: 80px;
-}
-.sc-portfolio .group-portfolio .swiper-pagination {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: initial;
-  text-align: left;
-}
-.sc-portfolio .group-portfolio .swiper-pagination .swiper-pagination-bullet {
-  font-size: 55px;
-  font-weight: 600;
-  margin: 0 25px;
-  background-color: transparent;
-}
-.sc-portfolio .group-portfolio .swiper-pagination .swiper-pagination-bullet:first-child {
-  margin-left: 0;
-}
-.sc-portfolio .group-portfolio .swiper-pagination .swiper-pagination-bullet-active {
-  --swiper-theme-color:initial;
 }
 .sc-portfolio .portfolio-list {
   width: 100%;
   position: relative;
 }
 .sc-portfolio .portfolio-list .portfolio-item {
+  padding: 30px 0 10px;
   position: relative;
-  transition: color 300ms;
 }
-.sc-portfolio .portfolio-list .portfolio-item:hover {
+.sc-portfolio .portfolio-list .portfolio-item:hover .sub-title {
   color: #7f807f;
 }
+.sc-portfolio .portfolio-list .portfolio-item:hover .img-box {
+  opacity: 1;
+  visibility: visible;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
 .sc-portfolio .portfolio-list .portfolio-item .portfolio {
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: flex-end;
   padding: 25px 0;
 }
 .sc-portfolio .portfolio-list .portfolio-item .portfolio .sub-title {
+  transition: color 300ms;
   font-size: 80px;
   font-weight: 600;
 }
@@ -526,7 +552,9 @@ a {
   width: 36px;
   height: 36px;
   display: block;
-  position: relative;
+  position: absolute;
+  top: 20px;
+  right: 0;
 }
 .sc-portfolio .portfolio-list .portfolio-item .portfolio .arrow img {
   width: 100%;
@@ -535,13 +563,75 @@ a {
   bottom: 0;
   left: 0;
 }
-.sc-portfolio .portfolio-list .portfolio-item .underline {
+.sc-portfolio .portfolio-list .portfolio-item .portfolio .hash {
+  padding: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+.sc-portfolio .portfolio-list .portfolio-item .portfolio .hash span {
+  transition: color 300ms;
+  border: 2px solid #fff;
+  padding: 5px 8px;
+  border-radius: 20px;
+}
+.sc-portfolio .portfolio-list .portfolio-item .portfolio .hash span:hover {
+  color: #7f807f;
+}
+.sc-portfolio .portfolio-list .portfolio-item .link-note {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.sc-portfolio .portfolio-list .portfolio-item .link-note img {
+  width: 100%;
+}
+.sc-portfolio .portfolio-list .portfolio-item .line-box {
+  overflow: hidden;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px;
+}
+.sc-portfolio .portfolio-list .portfolio-item .line-box .underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: #e3e0db;
+}
+.sc-portfolio .portfolio-list .portfolio-item .img-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 80px;
+  height: 888px;
+  width: 500px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  -webkit-clip-path: polygon(0 46%, 100% 46%, 100% 54%, 0 53%);
+          clip-path: polygon(0 46%, 100% 46%, 100% 54%, 0 53%);
+  z-index: 2;
+  border: 2px solid rgba(160, 160, 160, 0.5);
+}
+.sc-portfolio .portfolio-list .portfolio-item .img-box a {
+  display: block;
+  height: 100%;
+}
+.sc-portfolio .portfolio-list .portfolio-item .img-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .sc-portfolio .portfolio-list .upline {
   position: absolute;

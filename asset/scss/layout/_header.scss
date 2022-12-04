@@ -13,6 +13,17 @@
     justify-content: space-between;
     align-items: center;
     z-index:3;
+    &::after{
+        content: "";
+        pointer-events: none;
+        height: 300px;
+        background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(255, 199, 0, 0) 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
     .logo{
         display: block;
         a{
@@ -30,12 +41,12 @@
         width: 70px;
         height: 70px;
         overflow: hidden;
-        visibility:hidden;
+        // visibility:hidden;
 
         &.on{
             visibility:visible;
             .line{
-                transition:left 300ms 700ms, right 300ms 700ms, visibility 1ms 700ms;
+                // transition:left 300ms 700ms, right 300ms 700ms, visibility 1ms 700ms;
                 &.top{
                     left: 0;
                 }
@@ -78,11 +89,11 @@
             background: #e3e0db;
             height: 2px;
             &.top{
-                left: -70px;
+                left: -25px;
                 top: 25px;
             }
             &.bottom{
-                right: -70px;
+                right: -25px;
                 bottom: 25px;
             }
         }
@@ -169,4 +180,23 @@
         }
     }
 
+
+
+    
+}
+
+.gauge{
+    position: fixed;
+    top: 0;left: 0;
+    width: 100%;
+    height: 5px;
+    /* background:rgba(255,255,255,0.2); */
+    z-index: 10;
+}
+.gauge .curr{
+    width: 0;
+    display: block;
+    height: 100%;
+    background: #fff;
+    /* border-radius: 0px 4px 4px 0; */
 }
