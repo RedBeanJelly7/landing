@@ -464,10 +464,11 @@ a {
 .sc-data .data-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 175px;
+  height: 100%;
+  gap: 130px;
 }
 .sc-data .data-item {
-  width: calc((100% - 350px) / 3);
+  width: calc((100% - 260px) / 3);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -476,11 +477,11 @@ a {
   position: relative;
 }
 .sc-data .data-item .count-box strong {
-  font-size: 7.864vw;
+  font-size: 6.864vw;
   font-weight: 500;
 }
 .sc-data .data-item .count-box .unit {
-  font-size: 7.864vw;
+  font-size: 6.864vw;
 }
 .sc-data .data-item .desc {
   font-size: 0.9375vw;

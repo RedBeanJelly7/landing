@@ -393,7 +393,7 @@ $(".sc-advantages .bouble-item").click(function(){
 
 // 미완성 막아두기
 
-$(".portfolio-item").click(function(e){
+$(".link-note.soon").click(function(e){
     e.preventDefault();
-    alert("연결중입니다.");
+    alert("작성중입니다.");
 })
