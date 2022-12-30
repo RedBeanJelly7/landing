@@ -94,6 +94,13 @@ gsap.to(".sc-visual .bouble-item",{
 
 
 
+
+// intro 더보기 버튼
+
+$(".sc-intro .mobile-more").click(function(){
+    $(".sc-intro .desc").toggleClass("off");
+})
+
 // 포폴 리스트 선택
 
 portfolioList = [
@@ -135,6 +142,11 @@ $(".sc-portfolio .portfolio-item").mouseenter(function(e){
 })
 
 
+// 포폴리스트 모바일 슬라이드
+var swiper = new Swiper(".mobile-swiper", {
+  effect: "cards",
+  grabCursor: true,
+});
 
 
 
@@ -388,12 +400,4 @@ function changeNumber5() {
 
 $(".sc-advantages .bouble-item").click(function(){
     $("#email").get(0).click();
-})
-
-
-// 미완성 막아두기
-
-$(".link-note.soon").click(function(e){
-    e.preventDefault();
-    alert("작성중입니다.");
 })

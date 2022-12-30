@@ -1,0 +1,229 @@
+
+.sc-header{
+    transform:translateY(-100%);
+    opacity:0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100px;
+    padding: 0 20px;
+    // background: #f00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:3;
+    @include mobile{
+        height: 70px;
+    }
+    &::after{
+        content: "";
+        pointer-events: none;
+        height: 300px;
+        background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(255, 199, 0, 0) 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        @include mobile{
+            height:70px;
+            // background: rgba(0,0,0,0.5);
+        }
+    }
+    .logo{
+        display: block;
+        @include mobile{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:translate(-50%,-50%);
+        }
+        a{
+            display: block;
+            font-size: 40px;
+            color: #fff;
+            @include mobile{
+                font-size: 33px;
+            }
+        }
+    }
+
+    .btn-area{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        // visibility:hidden;
+        @include mobile{
+            position: initial;
+            transform:translate(0,0);
+            width: 40px;
+            height: 40px;
+        }
+        &.on{
+            visibility:visible;
+            .line{
+                // transition:left 300ms 700ms, right 300ms 700ms, visibility 1ms 700ms;
+                &.top{
+                    left: 0;
+                }
+                &.bottom{
+                    right: 0;
+                }  
+                
+                
+            }
+            // &:hover{
+            //     .line{
+            //         &.top{
+            //             left: -20px;
+            //         }
+            //         &.bottom{
+            //             right: -20px;
+            //         }    
+            //     }
+            // }
+
+            .cross{
+                transition:left 300ms, right 300ms, top 300ms;
+                &.left{
+                    transition-delay:600ms;
+                    left:50%;
+                    top:50%;
+                }
+                &.right{
+                    transition-delay: 900ms;
+                    right:50%;
+                    top: 50%;
+                }
+            }
+        }
+        .line{
+            transition:left 300ms, right 300ms, visibility 1ms 300ms;
+            display: block;
+            position: absolute;
+            width: 100%;
+            background: #e3e0db;
+            height: 2px;
+            &.top{
+                left: -25px;
+                top: 25px;
+                @include mobile{
+                    left: -15px;
+                }
+            }
+            &.bottom{
+                right: -25px;
+                bottom: 25px;
+                @include mobile{
+                    right: -15px;
+                }
+            }
+        }
+        .cross{
+            transition:left 600ms , right 600ms, top 600ms, visibility 1ms 600ms;
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: #e3e0db;
+            transform-origin: left top;
+            
+            &.left{
+                transform-origin: left top;
+                transform: rotate(-45deg) translate(-50%, -50%);
+                left: -50%;
+                top: -50%;
+            }
+            &.right{
+                transform-origin: right top;
+                transform: rotate(45deg) translate(50%, -50%);
+                right: -50%;
+                top: -50%;
+            }
+        }
+    }
+
+    .btn-darkmode{
+        width: 40px;
+        height: 40px;
+        transition:background 300ms;
+        background: url("../images/moon.png") center/contain no-repeat;
+    }
+    .btn-darkmode.off{
+        background: url("../images/sun.png") center/contain no-repeat;
+    }
+}
+
+
+
+
+
+.sc-side{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #1c1f24;
+    width: 100%;
+    height: 100%;
+    z-index:2;
+    color: #e3e0db;
+    padding: 0 5%;
+    visibility:hidden;
+    opacity:0;
+    transition:500ms;
+
+    &.on{
+        visibility:visible;
+        opacity:1;
+
+    }
+    .group-index{
+        position: absolute;
+        left: 50%;
+        top: 170px;
+
+        .index-name{
+            position: relative;
+            padding: 20px 0;
+            font-size: 5vw;
+            font-weight: 600;
+            display: block;
+            transition:color 450ms;
+            &:hover{
+                color: #6c6d6e;
+            }
+            .underline{
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background: #e3e0db;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+
+
+
+    
+}
+
+.gauge{
+    position: fixed;
+    top: 0;left: 0;
+    width: 100%;
+    height: 5px;
+    /* background:rgba(255,255,255,0.2); */
+    z-index: 10;
+}
+.gauge .curr{
+    width: 0;
+    display: block;
+    height: 100%;
+    background: #fff;
+    /* border-radius: 0px 4px 4px 0; */
+}
